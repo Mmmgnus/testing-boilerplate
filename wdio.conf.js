@@ -4,19 +4,21 @@ exports.config = {
 	],
 	port: '9515',
 	path: '/',
-	exclude: [
-		// 'path/to/excluded/files'
-	],
+	exclude: [],
 	
 	/* CAPABILITIES
 	============================================================================= */
-	capabilities: [{
-		maxInstances: 5,
-		browserName: 'chrome',
-		chromeOptions: {
-			args: ['--headless', '--disable-gpu']
+	capabilities: [
+		{	maxInstances: 5,
+			browserName: 'chrome',
+			chromeOptions: {
+				args: ['--headless', '--disable-gpu']
+			}
+		},
+		{	maxInstances: 5,
+			browserName: 'firefox',
 		}
-	}],
+	],
 
 	/* TEST CONFIGURATIONS 
 	============================================================================= */

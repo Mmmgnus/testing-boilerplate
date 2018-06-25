@@ -1,0 +1,7 @@
+{
+	"browserstack": {
+		"user": "magnus",	
+		"key": "1234",
+		"build": "testing-boilerplate"
+	}
+}

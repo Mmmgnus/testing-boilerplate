@@ -3,27 +3,24 @@
 ============================================================================= */
 module.exports = function(config) {
 	config.set({
-		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
-	
-		// frameworks to use
-		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+
 		frameworks: ['mocha', 'chai'],
-	
-		// list of files / patterns to load in the browser
-		files: [
-			{ pattern: '**/*.unit.js', watched: false }
-		],
-	
-		// list of files to exclude
-		exclude: [],
-	
-		// preprocess matching files before serving them to the browser
-		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
 			"**/*.unit.js": ["webpack"]
 		},
 
+		browsers: ['ChromeHeadless'],
+		// How many browser should be started simultaneous
+		concurrency: Infinity,
+
+		/* FILES
+		============================================================================= */
+		files: [
+			{ pattern: '**/*.unit.js', watched: false }
+		],
+		exclude: [],
+		
 		/* WEBPACK CONFIGURATION
 		============================================================================= */
 		webpack: require("./webpack.config.js"),
@@ -35,9 +32,6 @@ module.exports = function(config) {
 		 * Available reporters: https://npmjs.org/browse/keyword/karma-reporter
 		============================================================================= */
 		reporters: ['mocha'],
-
-		/* MOCHA OPTIONS
-		----------------------------------------------------------------------------- */
 		mochaReporter: {
 			output: 'full'
 		},
@@ -54,17 +48,9 @@ module.exports = function(config) {
 	
 		// enable / disable watching file and executing tests whenever any file changes
 		autoWatch: true,
-	
-		// start these browsers
-		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['ChromeHeadless'],
-	
+
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: false,
-	
-		// Concurrency level
-		// how many browser should be started simultaneous
-		concurrency: Infinity
+		singleRun: false
 	})
 }
